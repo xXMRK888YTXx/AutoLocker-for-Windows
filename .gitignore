@@ -1,0 +1,9 @@
+/debug
+/release
+*.stash
+*.autosave
+*.ini
+*.log
+*.Debug
+*.Release
+MakeFile

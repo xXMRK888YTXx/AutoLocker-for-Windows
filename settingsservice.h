@@ -3,10 +3,15 @@
 
 #include <QSettings>
 #include <QDebug>
+#include "logger.h"
 class SettingsService
 {
 public:
-    SettingsService() noexcept;
+    SettingsService(Logger *logger);
+    int GetLogLevel() noexcept {return LogLevel;};
+    int GetTimeout_s() noexcept {return Timeout_s;};
+    bool GetTray() noexcept {return Tray;};
+    QString GetVERSION() noexcept {return VERSION;};
 private:
     QSettings *Settings;
     int LogLevel = 0;
@@ -15,6 +20,8 @@ private:
     void initSettings() noexcept;
     void loadSettings() noexcept;
     const QString VERSION = "1.0alpha";
+    bool isValid() noexcept;
+    Logger *logger = nullptr;
 };
 
 #endif // SETTINGSSERVICE_H

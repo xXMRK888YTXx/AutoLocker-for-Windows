@@ -4,6 +4,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    SettingsService s;
+    Logger *l = new Logger();
+    SettingsService *s = new SettingsService(l);
     return a.exec();
 }

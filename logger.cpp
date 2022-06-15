@@ -9,7 +9,6 @@ Logger::Logger()
     else {
         throw Exception("OpenFileLogException",this);
     }
-    throw Exception("test",this);
 }
 
 Logger::~Logger()
@@ -22,7 +21,7 @@ void Logger::setFilter(logFilter filter) noexcept
     this->filter = filter;
 }
 
-void Logger::log(Tag tag, QString msg)
+void Logger::log(Tag tag, QString msg) noexcept
 {
     qDebug()<<filter;
     if((int)tag <= (int)filter&&filter != logFilter::NoLog) {

@@ -20,9 +20,9 @@ class Logger
 {
 public:
     Logger();
-    ~Logger();
+    ~Logger() noexcept;
     void setFilter(logFilter filter) noexcept;
-    void log(Tag tag,QString msg);
+    void log(Tag tag,QString msg) noexcept;
     QFile logFile;
 private:
     logFilter filter = NoLog;

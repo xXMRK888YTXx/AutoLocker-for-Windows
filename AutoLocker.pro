@@ -18,6 +18,7 @@ SOURCES += \
         exception.cpp \
         logger.cpp \
         main.cpp \
+        mainprogramclass.cpp \
         settingsservice.cpp
 
 # Default rules for deployment.
@@ -28,4 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     exception.h \
     logger.h \
+    mainprogramclass.h \
     settingsservice.h

@@ -1,12 +1,12 @@
 #include "exception.h"
 
-Exception::Exception(QString ex)
+Exception::Exception(QString ex, Logger *log) noexcept
 {
-    what(ex);
+    what(ex,log);
 }
 
-
-void Exception::what(QString ex)
+void Exception::what(QString ex, Logger *log) noexcept
 {
-    qDebug()<<"An exception was thrown during program execution --> "+ex<<endl;
+    qDebug()<<DEFAULT_TEXT_EXCEPTION+ex<<endl;
+    if(log != nullptr) log->log(Tag::Errors,DEFAULT_TEXT_EXCEPTION+ex);
 }

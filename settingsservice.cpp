@@ -1,15 +1,14 @@
 #include "settingsservice.h"
-
+#include "exception.h"
 SettingsService::SettingsService(Logger *logger)
 {
     this->logger = logger;
     Settings = new QSettings("Settings.ini",QSettings::IniFormat);
     if(Settings->value("VERSION","nan").toString() != VERSION) initSettings();
     else loadSettings();
-    if(!isValid()) throw(Exception("InlegalSettingsException"));
-    //logger->log(Tag::Info,"test");
-
-
+    logger->setFilter(GetLogLevel());
+    if(!isValid())
+    throw(Exception("InlegalSettingsException",logger));
 }
 
 void SettingsService::initSettings() noexcept

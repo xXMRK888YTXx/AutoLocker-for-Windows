@@ -7,6 +7,6 @@ Logger::Logger()
 
 void Logger::log(Tag tag, QString msg)
 {
-   qDebug()<<msg;
+
 }
 

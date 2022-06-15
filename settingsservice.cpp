@@ -6,8 +6,8 @@ SettingsService::SettingsService(Logger *logger)
     Settings = new QSettings("Settings.ini",QSettings::IniFormat);
     if(Settings->value("VERSION","nan").toString() != VERSION) initSettings();
     else loadSettings();
-    if(!isValid()) throw("InlegalSettingsException");
-    logger->log(Tag::Info,"test");
+    if(!isValid()) throw(Exception("InlegalSettingsException"));
+    //logger->log(Tag::Info,"test");
 
 
 }

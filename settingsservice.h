@@ -4,6 +4,7 @@
 #include <QSettings>
 #include <QDebug>
 #include "logger.h"
+#include <exception.h>
 class SettingsService
 {
 public:

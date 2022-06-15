@@ -17,7 +17,7 @@ class Logger
 public:
     Logger();
     ~Logger();
-    void setFilter(logFilter filter){this->filter = filter;};
+    void setFilter(logFilter filter) noexcept {this->filter = filter;};
     void log(Tag tag,QString msg);
 private:
     logFilter filter = NoLog;

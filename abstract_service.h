@@ -8,10 +8,10 @@
 #include "settingsservice.h"
 #include "logger.h"
 #include "exception.h"
+#include <QThread>
 enum ServiceState{
     Stop = 0,
-    Pause = 1,
-    Run = 2
+    Run = 1
 };
 
 class Abstract_Service : public QObject
@@ -19,13 +19,17 @@ class Abstract_Service : public QObject
     Q_OBJECT
 public:
     explicit Abstract_Service(QObject *parent = nullptr);
+private:
+
 protected:
     SettingsService *settingsService;
     Logger *logger;
-    ServiceState state = Stop;
-    void changeState(ServiceState state,QString SERVICE_NAME);
+    ServiceState service_State = Stop;
+    void changeStateService(ServiceState state,QString SERVICE_NAME);
+    QThread *workThread;
 protected slots:
     virtual void run();
+    virtual void changeStateServiceSlot(QString service,int state) noexcept;
 };
 
 #endif // ABSTRACT_SERVICE_H

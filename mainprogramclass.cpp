@@ -9,10 +9,19 @@ MainProgramClass::MainProgramClass(Logger *logger, SettingsService *settingsServ
 
     autoLockerService->moveToThread(autoLockerThread);
     workStansionStatusServise->moveToThread(workStansionStatusThread);
-    connect(autoLockerThread,SIGNAL(started()),autoLockerService,SLOT(run()));
-    connect(workStansionStatusThread,SIGNAL(started()),workStansionStatusServise,SLOT(run()));
+    connect(workStansionStatusServise,SIGNAL(workStansionStateChangedSignal(bool)),this,SLOT(workStansionStateChangedSlot(bool)));
+    connect(this,SIGNAL(changeServiseState(QString,int)),autoLockerService,SLOT(changeStateServiceSlot(QString,int)));
+    connect(this,SIGNAL(changeServiseState(QString,int)),workStansionStatusServise,SLOT(changeStateServiceSlot(QString,int)));
     autoLockerThread->start();
     workStansionStatusThread->start();
-//    autoLockerService.run();
-//    workStansionStatusServise.run();
+    emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Run);
+    Sleep(10000);
+    emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Stop);
+     Sleep(10000);
+    emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Run);
+}
+
+void MainProgramClass::workStansionStateChangedSlot(bool state)
+{
+    qDebug()<<"WorkStansion state change "<<state;
 }

@@ -19,8 +19,9 @@ private:
     WorkStansionStatusServise *workStansionStatusServise;
     AutoLockerService *autoLockerService;
 signals:
-
-
+    void changeServiseState(QString service,int state);
+private slots:
+    void workStansionStateChangedSlot(bool state);
 };
 
 #endif // MAINPROGRAMCLASS_H

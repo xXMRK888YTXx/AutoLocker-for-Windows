@@ -4,6 +4,8 @@ WorkStansionStatusServise::WorkStansionStatusServise(SettingsService *settingsSe
 {
     this->settingsService = settingsService;
     this->logger = logger;
+    workThread = new QThread;
+    delay = settingsService->getDelayWorkStansionStateService() * 1000;
 
 }
 
@@ -25,17 +27,27 @@ bool WorkStansionStatusServise::getWorkStansionState() //true - pc is not lock; 
         return false;
 }
 
-void WorkStansionStatusServise::stateChanged()
+void WorkStansionStatusServise::stateWorkStansionChanged()
 {
-    state = !state;
-    emit workStansionStateChangedSignal(state);
+    stateWorkStansion = !stateWorkStansion;
+    emit workStansionStateChangedSignal(stateWorkStansion);
 }
 
 void WorkStansionStatusServise::run()
 {
-    changeState(Run,SERVICE_NAME);
-    while(true) {
-       qDebug()<<getWorkStansionState();
-       Sleep(1000);
-    }
+    stateWorkStansion = getWorkStansionState();
+    workThread->create([&](){
+        while(service_State == Run) {
+           if(stateWorkStansion != getWorkStansionState())
+               stateWorkStansionChanged();
+           Sleep(delay);
+        }
+        qDebug()<<"qwe";
+    })->start();
 }
+
+void WorkStansionStatusServise::changeStateServiceSlot(QString service, int state) noexcept
+{
+    if(service == SERVICE_NAME) changeStateService((ServiceState)state,SERVICE_NAME);
+}
+

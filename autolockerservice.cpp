@@ -4,14 +4,20 @@ AutoLockerService::AutoLockerService(SettingsService *settingsService, Logger *l
 {
     this->settingsService = settingsService;
     this->logger = logger;
+    workThread = new QThread;
 }
 
 void AutoLockerService::run()
 {
-    changeState(Run,SERVICE_NAME);
+    changeStateService(Run,SERVICE_NAME);
     while (true) {
         qDebug("AutoLockerService");
-        _sleep(1000);
+        _sleep(5000);
     }
 
+}
+
+void AutoLockerService::changeStateServiceSlot(QString service, int state) noexcept
+{
+    if(service == SERVICE_NAME) changeStateService((ServiceState)state,SERVICE_NAME);
 }

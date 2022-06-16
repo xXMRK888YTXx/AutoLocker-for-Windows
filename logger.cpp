@@ -3,12 +3,12 @@
 Logger::Logger(SettingsService *settings)
 {
     this->settings = nullptr;
-    setFilter((logFilter)settings->GetLogLevel());
+    setFilter((logFilter)settings->getLogLevel());
     logFile.setFileName(LOG_FILE_NAME);
     if(filter == NoLog) return;
     if(logFile.open((QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))) {
        log(Log_m,"");
-       log(Tag::Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString()+" "+settings->VERSION);
+       log(Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString()+" "+settings->VERSION);
     }
     else {
         throw Exception("OpenFileLogException",this);
@@ -27,7 +27,7 @@ void Logger::setFilter(logFilter filter) noexcept
 
 void Logger::log(Tag tag, QString msg) noexcept
 {
-    qDebug()<<filter;
+     qDebug()<<msg;
     if((int)tag <= (int)filter&&filter != logFilter::NoLog) {
         QTextStream write(&logFile);
         write<<msg<<endl;

@@ -5,20 +5,18 @@ Abstract_Service::Abstract_Service(QObject *parent) : QObject(parent)
 
 }
 
-void Abstract_Service::changeState(ServiceState state,QString SERVICE_NAME)
+void Abstract_Service::changeStateService(ServiceState state,QString SERVICE_NAME)
 {
-    this->state = state;
+    if(service_State == state) return;
+    service_State = state;
     switch (state) {
     case Stop: {
         logger->log(Info,SERVICE_NAME+"has been stopped");
         break;
     }
-    case Pause: {
-        logger->log(Info,SERVICE_NAME+"has been paused");
-        break;
-    }
     case Run: {
         logger->log(Info,SERVICE_NAME+"has been running");
+        run();
         break;
     }
     default: {
@@ -31,3 +29,9 @@ void Abstract_Service::run()
 {
 
 }
+
+void Abstract_Service::changeStateServiceSlot(QString service, int state) noexcept
+{
+
+}
+

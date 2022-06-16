@@ -8,11 +8,12 @@ class AutoLockerService : public Abstract_Service
     Q_OBJECT
 public:
     explicit AutoLockerService(SettingsService *settingsService,Logger *logger,QObject *parent = nullptr);
+    const QString SERVICE_NAME = "AutoLockerService";
 signals:
 private:
-    const QString SERVICE_NAME = "AutoLockerService";
 public slots:
     void run() override;
+    void changeStateServiceSlot(QString service, int state) noexcept override;
 
 };
 

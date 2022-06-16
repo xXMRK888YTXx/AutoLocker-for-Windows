@@ -9,15 +9,17 @@ class WorkStansionStatusServise : public Abstract_Service
 public:
     explicit WorkStansionStatusServise(SettingsService *settingsService, Logger *logger, QObject *parent = nullptr);
     bool getWorkStansionState();
+    const QString SERVICE_NAME = "WorkStansionStatusServise";
 signals:
     void workStansionStateChangedSignal(bool state);
 private:
-    const QString SERVICE_NAME = "WorkStansionStatusServise";
-    bool state;
-    void stateChanged();
-    short Delay;
+    bool stateWorkStansion;
+    void stateWorkStansionChanged();
+    short delay;
+
 public slots:
     void run() override;
+    void changeStateServiceSlot(QString service, int state) noexcept override;
 };
 
 #endif // WORKSTANSIONSTATUSSERVISE_H

@@ -1,3 +1,12 @@
-An exception was thrown during program execution --> test
-Programm Started in Ñð èþí 15 14:40:43 2022
-An exception was thrown during program execution --> test
+
+Programm Started in ×ò èþí 16 09:28:58 2022
+AutoLockerServicehas been running
+WorkStansionStatusServisehas been running
+
+Programm Started in ×ò èþí 16 09:30:26 20221.0alpha
+WorkStansionStatusServisehas been running
+AutoLockerServicehas been running
+
+Programm Started in ×ò èþí 16 09:31:30 2022 1.0alpha
+AutoLockerServicehas been running
+WorkStansionStatusServisehas been running

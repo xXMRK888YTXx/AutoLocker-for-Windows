@@ -1,10 +1,14 @@
 #include "logger.h"
 #include "exception.h"
-Logger::Logger()
+Logger::Logger(SettingsService *settings)
 {
+    this->settings = nullptr;
+    setFilter((logFilter)settings->GetLogLevel());
     logFile.setFileName(LOG_FILE_NAME);
-    if(logFile.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
-       log(Tag::Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString());
+    if(filter == NoLog) return;
+    if(logFile.open((QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))) {
+       log(Log_m,"");
+       log(Tag::Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString()+" "+settings->VERSION);
     }
     else {
         throw Exception("OpenFileLogException",this);

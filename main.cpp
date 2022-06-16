@@ -4,8 +4,8 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    Logger *l = new Logger();
-    SettingsService *s = new SettingsService(l);
+    SettingsService *s = new SettingsService();
+    Logger *l = new Logger(s);
     MainProgramClass *m = new MainProgramClass(l,s);
     return a.exec();
 }

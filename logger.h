@@ -16,14 +16,16 @@ enum Tag{
 #include <QFile>
 #include <QDateTime>
 #include <QTextStream>
+#include "settingsservice.h"
 class Logger
 {
 public:
-    Logger();
+    Logger(SettingsService *settings);
     ~Logger() noexcept;
     void setFilter(logFilter filter) noexcept;
     void log(Tag tag,QString msg) noexcept;
     QFile logFile;
+    SettingsService *settings = nullptr;
 private:
     logFilter filter = NoLog;
     const QString LOG_FILE_NAME = "log.txt";

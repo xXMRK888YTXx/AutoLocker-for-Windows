@@ -10,7 +10,12 @@ public:
     explicit WorkStansionStatusServise(SettingsService *settingsService, Logger *logger, QObject *parent = nullptr);
     bool getWorkStansionState();
 signals:
-
+    void workStansionStateChangedSignal(bool state);
+private:
+    const QString SERVICE_NAME = "WorkStansionStatusServise";
+    bool state;
+    void stateChanged();
+    short Delay;
 public slots:
     void run() override;
 };

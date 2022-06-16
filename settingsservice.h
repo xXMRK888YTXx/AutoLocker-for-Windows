@@ -3,25 +3,24 @@
 
 #include <QSettings>
 #include <QDebug>
-#include "logger.h"
 class SettingsService
 {
 public:
-    SettingsService(Logger *logger);
-    logFilter GetLogLevel() noexcept {return (logFilter)LogLevel;};
-    int GetTimeout_s() noexcept {return Timeout_s;};
-    bool GetTray() noexcept {return Tray;};
-    QString GetVERSION() noexcept {return VERSION;};
+    SettingsService();
+    int getLogLevel() noexcept {return LogLevel;};
+    int getTimeout_s() noexcept {return Timeout_s;};
+    bool getTray() noexcept {return Tray;};
+    short getDelayWorkStansionStateService() noexcept {return delayWorkStansionStateService_s;};
+    const QString VERSION = "1.0alpha";
 private:
     QSettings *Settings;
     int LogLevel = 0;
     int Timeout_s = 60;
+    short delayWorkStansionStateService_s = 2;
     bool Tray = false;
     void initSettings() noexcept;
     void loadSettings() noexcept;
-    const QString VERSION = "1.0alpha";
     bool isValid() noexcept;
-    Logger *logger = nullptr;
 };
 
 #endif // SETTINGSSERVICE_H

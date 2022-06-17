@@ -22,7 +22,7 @@ bool WorkStansionStatusServise::getWorkStansionState() //true - pc is not lock; 
             }
         }
         else {
-            throw Exception("DesktopisNULL");
+            throw Exception("DesktopisNULL",logger);
         }
         return false;
 }
@@ -38,11 +38,11 @@ void WorkStansionStatusServise::run()
     stateWorkStansion = getWorkStansionState();
     workThread->create([&](){
         while(service_State == Run) {
+            qDebug()<<stateWorkStansion;
            if(stateWorkStansion != getWorkStansionState())
                stateWorkStansionChanged();
            Sleep(delay);
         }
-        qDebug()<<"qwe";
     })->start();
 }
 

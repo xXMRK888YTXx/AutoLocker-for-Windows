@@ -16,9 +16,9 @@ private:
     bool stateWorkStansion;
     void stateWorkStansionChanged();
     short delay;
-
-public slots:
+private slots:
     void run() override;
+public slots:
     void changeStateServiceSlot(QString service, int state) noexcept override;
 };
 

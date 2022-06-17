@@ -21,6 +21,7 @@ SOURCES += \
         logger.cpp \
         main.cpp \
         mainprogramclass.cpp \
+        mousepoint.cpp \
         settingsservice.cpp \
         workstansionstatusservise.cpp
 
@@ -35,5 +36,6 @@ HEADERS += \
     exception.h \
     logger.h \
     mainprogramclass.h \
+    mousepoint.h \
     settingsservice.h \
     workstansionstatusservise.h

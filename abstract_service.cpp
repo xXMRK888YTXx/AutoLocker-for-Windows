@@ -11,16 +11,17 @@ void Abstract_Service::changeStateService(ServiceState state,QString SERVICE_NAM
     service_State = state;
     switch (state) {
     case Stop: {
-        logger->log(Info,SERVICE_NAME+"has been stopped");
+        logger->log(Info,SERVICE_NAME+" has been stopped");
         break;
     }
     case Run: {
-        logger->log(Info,SERVICE_NAME+"has been running");
+        logger->log(Info,SERVICE_NAME+" has been running");
         run();
         break;
     }
     default: {
         throw Exception("InvalidStateServiceException",logger);
+        break;
     }
     }
 }

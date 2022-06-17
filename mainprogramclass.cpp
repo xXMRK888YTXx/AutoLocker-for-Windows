@@ -15,13 +15,12 @@ MainProgramClass::MainProgramClass(Logger *logger, SettingsService *settingsServ
     autoLockerThread->start();
     workStansionStatusThread->start();
     emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Run);
-    Sleep(10000);
-    emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Stop);
-     Sleep(10000);
-    emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Run);
+    emit changeServiseState(autoLockerService->SERVICE_NAME,(int)Run);
 }
 
 void MainProgramClass::workStansionStateChangedSlot(bool state)
 {
     qDebug()<<"WorkStansion state change "<<state;
+    if(state&&autoLockerService->getService_State() != Run) emit changeServiseState(autoLockerService->SERVICE_NAME,(int)Run);
+    else if(!state&&autoLockerService->getService_State() != Stop)  emit changeServiseState(autoLockerService->SERVICE_NAME,(int)Stop);
 }

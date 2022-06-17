@@ -19,6 +19,7 @@ class Abstract_Service : public QObject
     Q_OBJECT
 public:
     explicit Abstract_Service(QObject *parent = nullptr);
+    ServiceState getService_State() noexcept {return service_State;};
 private:
 
 protected:

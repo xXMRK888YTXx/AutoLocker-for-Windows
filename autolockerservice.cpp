@@ -7,13 +7,27 @@ AutoLockerService::AutoLockerService(SettingsService *settingsService, Logger *l
     workThread = new QThread;
 }
 
+MousePoint AutoLockerService::getPosMouse()
+{
+    POINT pos;
+    GetCursorPos(&pos);
+    if(pos.x > 10000||pos.y > 10000) throw Exception("InlegalMousePosException",logger);
+    return MousePoint(pos);
+}
+
 void AutoLockerService::run()
 {
-    changeStateService(Run,SERVICE_NAME);
-    while (true) {
-        qDebug("AutoLockerService");
-        _sleep(5000);
-    }
+    workThread->create([&](){
+        while (getService_State() == Run) {
+            try {
+                qDebug()<<getPosMouse().toString();
+            } catch (Exception &e) {
+                //changeStateService(Stop,SERVICE_NAME);
+            }
+            _sleep(1000);
+        }
+    })->start();
+
 
 }
 

@@ -2,10 +2,11 @@
 
 AutoLockerService::AutoLockerService(SettingsService *settingsService, Logger *logger, QObject *parent) : Abstract_Service(parent)
 {
-    idleTime_ms = 10*1000;
+    idleTime_ms = 20*1000;
     this->settingsService = settingsService;
     this->logger = logger;
-    workThread = new QThread;
+    checkMouseThread = new QThread;
+    checkKeyBoardThread = new QThread;
     idleTimer = new QTimer(this);
     connect(idleTimer,SIGNAL(timeout()),this,SLOT(pcInIdleStatusSlot()));
     connect(this,SIGNAL(startT(int)),this,SLOT(startTimer(int)));
@@ -30,9 +31,22 @@ void AutoLockerService::changeStateService(ServiceState state, QString SERVICE_N
     }
 }
 
+void AutoLockerService::checkKeyBoard()
+{
+
+    for(int i = 0;i<256;i++) {
+        if(GetAsyncKeyState(i)) {
+            emit resetT();
+
+        }
+    }
+
+}
+
 void AutoLockerService::resetTimer()
 {
     if(!idleTimer->isActive()) return;
+    qDebug()<<"Timer reset";
     idleTimer->stop();
     idleTimer->start(idleTime_ms);
 }
@@ -44,16 +58,16 @@ void AutoLockerService::stopTimer()
 
 void AutoLockerService::run()
 {
-    workThread->create([&](){
+    checkMouseThread->create([&](){
         MousePoint currentPos = getPosMouse();
         emit startT(idleTime_ms);
         while (getService_State() == Run) {
+            checkKeyBoard();
             try {
                 MousePoint temp = getPosMouse();
                 qDebug()<<temp.toString();
                 if(currentPos != temp) {
                     currentPos = temp;
-                    qDebug()<<"Timer reset";
                     emit resetT();
                 }
             } catch (Exception &e) {
@@ -63,11 +77,20 @@ void AutoLockerService::run()
         }
         emit stopT();
     })->start();
+    checkMouseThread->create([&](){
+        while(getService_State() == Run) {
+            Sleep(1000);
+             checkKeyBoard();
+        }
+    })->start();
+
+
 }
 
 void AutoLockerService::pcInIdleStatusSlot()
 {
     qDebug()<<"timeout";
+    logger->log(Tag::Info,"Pc in idle mode");
     LockWorkStation();
 }
 

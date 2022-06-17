@@ -28,7 +28,6 @@ protected:
     Logger *logger;
     ServiceState service_State = Stop;
     virtual void changeStateService(ServiceState state,QString SERVICE_NAME);
-    QThread *workThread;
 protected slots:
     virtual void run();
     virtual void changeStateServiceSlot(QString service,int state) noexcept;

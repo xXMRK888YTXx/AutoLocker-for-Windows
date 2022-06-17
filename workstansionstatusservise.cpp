@@ -4,7 +4,7 @@ WorkStansionStatusServise::WorkStansionStatusServise(SettingsService *settingsSe
 {
     this->settingsService = settingsService;
     this->logger = logger;
-    workThread = new QThread;
+    checkStateThread = new QThread;
     delay = settingsService->getDelayWorkStansionStateService() * 1000;
 
 }
@@ -36,7 +36,7 @@ void WorkStansionStatusServise::stateWorkStansionChanged()
 void WorkStansionStatusServise::run()
 {
     stateWorkStansion = getWorkStansionState();
-    workThread->create([&](){
+    checkStateThread->create([&](){
         while(service_State == Run) {
             qDebug()<<stateWorkStansion;
            if(stateWorkStansion != getWorkStansionState())

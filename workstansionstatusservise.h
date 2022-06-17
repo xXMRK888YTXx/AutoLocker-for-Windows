@@ -16,6 +16,7 @@ private:
     bool stateWorkStansion;
     void stateWorkStansionChanged();
     short delay;
+    QThread *checkStateThread;
 private slots:
     void run() override;
 public slots:

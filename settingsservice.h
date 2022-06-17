@@ -11,7 +11,7 @@ public:
     int getTimeout_s() noexcept {return Timeout_s;};
     bool getTray() noexcept {return Tray;};
     short getDelayWorkStansionStateService() noexcept {return delayWorkStansionStateService_s;};
-    const QString VERSION = "1.0alpha";
+    const QString VERSION = "v1.1alpha";
 private:
     QSettings *Settings;
     int LogLevel = 0;

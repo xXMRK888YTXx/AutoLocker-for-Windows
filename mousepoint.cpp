@@ -29,6 +29,11 @@ void MousePoint::operator=(const MousePoint &other)
     setY(other.y);
 }
 
+bool MousePoint::operator!=(const MousePoint &other) noexcept
+{
+    return !operator==(other);
+}
+
 QString MousePoint::toString()
 {
     return "[x: "+QString::number(getX())+" y: "+QString::number(getY())+"]";

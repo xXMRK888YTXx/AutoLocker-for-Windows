@@ -15,7 +15,7 @@ public:
     void setY(long y) noexcept {this->y = y;};
     bool operator==(const MousePoint &other) noexcept;
     void operator=(const MousePoint &other);
-    QString operator<<(const MousePoint &point){return toString();};
+    bool operator!=(const MousePoint &other) noexcept;
     QString toString();
 private:
     long x;

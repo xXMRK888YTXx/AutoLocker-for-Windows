@@ -9,6 +9,7 @@
 #include "logger.h"
 #include "exception.h"
 #include <QThread>
+#include <QTimer>
 enum ServiceState{
     Stop = 0,
     Run = 1
@@ -26,7 +27,7 @@ protected:
     SettingsService *settingsService;
     Logger *logger;
     ServiceState service_State = Stop;
-    void changeStateService(ServiceState state,QString SERVICE_NAME);
+    virtual void changeStateService(ServiceState state,QString SERVICE_NAME);
     QThread *workThread;
 protected slots:
     virtual void run();

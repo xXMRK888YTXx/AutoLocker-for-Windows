@@ -27,7 +27,8 @@ void Logger::setFilter(logFilter filter) noexcept
 
 void Logger::log(Tag tag, QString msg) noexcept
 {
-     qDebug()<<msg;
+
+     /*потом удалить*/ qDebug()<<msg;
     if((int)tag <= (int)filter&&filter != logFilter::NoLog) {
         QTextStream write(&logFile);
         write<<msg<<endl;

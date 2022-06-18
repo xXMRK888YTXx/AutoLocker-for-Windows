@@ -7,6 +7,5 @@ Exception::Exception(QString ex, Logger *log) noexcept
 
 void Exception::what(QString ex, Logger *log) noexcept
 {
-    qDebug()<<DEFAULT_TEXT_EXCEPTION+ex<<endl;
     if(log != nullptr) log->log(Tag::Errors,DEFAULT_TEXT_EXCEPTION+ex);
 }

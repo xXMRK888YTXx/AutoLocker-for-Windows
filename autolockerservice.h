@@ -23,6 +23,7 @@ signals:
     void startT(int s);
     void resetT();
     void stopT();
+    void pcInIdleMode();
 private slots:
     void run() override;
     void pcInIdleStatusSlot();

@@ -4,9 +4,11 @@ MainProgramClass::MainProgramClass(Logger *logger, SettingsService *settingsServ
 {
     autoLockerService = new AutoLockerService(settingsService,logger);
     workStansionStatusServise = new WorkStansionStatusServise(settingsService,logger);
-    autoLockerThread = new QThread();
-    workStansionStatusThread = new QThread();
-    hotKeyCheckerThread = new QThread();
+    runProcessThread = new QThread;
+    closeProcessThread = new QThread;
+    autoLockerThread = new QThread;
+    workStansionStatusThread = new QThread;
+    hotKeyCheckerThread = new QThread;
     this->logger = logger;
     this->settingsService = settingsService;
     autoLockerService->moveToThread(autoLockerThread);
@@ -14,6 +16,7 @@ MainProgramClass::MainProgramClass(Logger *logger, SettingsService *settingsServ
     connect(workStansionStatusServise,SIGNAL(workStansionStateChangedSignal(bool)),this,SLOT(workStansionStateChangedSlot(bool)));
     connect(this,SIGNAL(changeServiseState(QString,int)),autoLockerService,SLOT(changeStateServiceSlot(QString,int)));
     connect(this,SIGNAL(changeServiseState(QString,int)),workStansionStatusServise,SLOT(changeStateServiceSlot(QString,int)));
+    connect(autoLockerService,SIGNAL(pcInIdleMode()),this,SLOT(pcInIdleModeSlot()));
     autoLockerThread->start();
     workStansionStatusThread->start();
     emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)Run);
@@ -30,7 +33,7 @@ void MainProgramClass::trackHotKey()
                     globalStateChange(Stop);
                 else if(workStansionStatusServise->getService_State() == Stop)
                     globalStateChange(Run);
-                logger->log(Tag::Info,"HotKey");
+                logger->log(Tag::Info,"Hotkey pressed");
             }
             Sleep(500);
         }
@@ -43,9 +46,30 @@ void MainProgramClass::globalStateChange(ServiceState state)
     emit changeServiseState(autoLockerService->SERVICE_NAME,(int)state);
 }
 
+void MainProgramClass::closeProcessTask()
+{
+    if(!settingsService->getTaskProcessEnable()) return;
+    closeProcessThread->create([&](){
+        auto list = settingsService->getCloseProcessList();
+         QProcess *process = new QProcess;
+        for(int i = 0;i<list.size();i++) {
+            process->start("taskkill /IM "+list[i]+" /F");
+            process->waitForFinished(10000);
+            process->close();
+            logger->log(Info,list[i]+" terminated");
+        }
+        delete process;
+    })->start();
+}
+
 void MainProgramClass::workStansionStateChangedSlot(bool state)
 {
     logger->log(Tag::Info,"Workstansion status changed");
     if(state&&autoLockerService->getService_State() != Run) emit changeServiseState(autoLockerService->SERVICE_NAME,(int)Run);
     else if(!state&&autoLockerService->getService_State() != Stop)  emit changeServiseState(autoLockerService->SERVICE_NAME,(int)Stop);
+}
+
+void MainProgramClass::pcInIdleModeSlot()
+{
+    closeProcessTask();
 }

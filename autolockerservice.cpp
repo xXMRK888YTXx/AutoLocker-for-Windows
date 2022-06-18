@@ -44,7 +44,7 @@ void AutoLockerService::checkKeyBoard()
 void AutoLockerService::resetTimer()
 {
     if(!idleTimer->isActive()) return;
-    qDebug()<<"Timer reset";
+    //qDebug()<<"Timer reset";
     idleTimer->stop();
     idleTimer->start(idleTimeOut_ms);
 }
@@ -62,7 +62,7 @@ void AutoLockerService::run()
         while (getService_State() == Run) {
             try {
                 MousePoint temp = getPosMouse();
-                qDebug()<<temp.toString();
+                //qDebug()<<temp.toString();
                 if(currentPos != temp) {
                     currentPos = temp;
                     emit resetT();
@@ -86,9 +86,11 @@ void AutoLockerService::run()
 
 void AutoLockerService::pcInIdleStatusSlot()
 {
-    qDebug()<<"timeout";
+    //qDebug()<<"timeout";
     logger->log(Tag::Info,"Pc in idle mode");
     LockWorkStation();
+    emit pcInIdleMode();
+    emit stopT();
 }
 
 void AutoLockerService::startTimer(int s)

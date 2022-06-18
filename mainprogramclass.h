@@ -7,6 +7,7 @@
 #include "settingsservice.h"
 #include <windows.h>
 #include "autolockerservice.h"
+#include <QProcess>
 #include "workstansionstatusservise.h"
 class MainProgramClass : public QObject
 {
@@ -18,16 +19,20 @@ private:
     QThread *autoLockerThread;
     QThread *workStansionStatusThread;
     QThread *hotKeyCheckerThread;
+    QThread *runProcessThread;
+    QThread *closeProcessThread;
     WorkStansionStatusServise *workStansionStatusServise;
     AutoLockerService *autoLockerService;
     SettingsService *settingsService;
     void trackHotKey();
     Logger *logger;
     void globalStateChange(ServiceState state);
+    void closeProcessTask();
 signals:
     void changeServiseState(QString service,int state);
 private slots:
     void workStansionStateChangedSlot(bool state);
+    void pcInIdleModeSlot();
 };
 
 #endif // MAINPROGRAMCLASS_H

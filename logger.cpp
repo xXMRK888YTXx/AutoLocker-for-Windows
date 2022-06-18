@@ -8,7 +8,7 @@ Logger::Logger(SettingsService *settings)
     if(filter == NoLog) return;
     if(logFile.open((QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))) {
        log(Log_m,"");
-       log(Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString()+" "+settings->VERSION);
+       log(Log_m ,"Programm Started in "+QDateTime::currentDateTime().toString()+" "+settings->CURRENT_VERSION);
     }
     else {
         throw Exception("OpenFileLogException",this);
@@ -27,8 +27,6 @@ void Logger::setFilter(logFilter filter) noexcept
 
 void Logger::log(Tag tag, QString msg) noexcept
 {
-
-     /*потом удалить*/ qDebug()<<msg;
     if((int)tag <= (int)filter&&filter != logFilter::NoLog) {
         QTextStream write(&logFile);
         write<<msg<<endl;

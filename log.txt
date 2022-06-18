@@ -1,1 +1,43 @@
 
+
+Programm Started in бс шўэ 18 22:49:03 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+
+Programm Started in бс шўэ 18 22:49:26 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+AutoLockerService has been stopped
+WorkStansionStatusServise has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+AutoLockerService has been stopped
+WorkStansionStatusServise has been stopped
+Hotkey pressed
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Pc in idle mode
+Workstansion status changed
+AutoLockerService has been stopped
+Workstansion status changed
+AutoLockerService has been running
+Pc in idle mode
+Workstansion status changed
+AutoLockerService has been stopped
+Workstansion status changed
+AutoLockerService has been running

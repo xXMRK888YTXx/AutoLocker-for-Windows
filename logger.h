@@ -16,6 +16,7 @@ enum Tag{
 #include <QFile>
 #include <QDateTime>
 #include <QTextStream>
+#include <QMutex>
 #include "settingsservice.h"
 class Logger
 {
@@ -25,6 +26,7 @@ public:
     void setFilter(logFilter filter) noexcept;
     void log(Tag tag,QString msg) noexcept;
     QFile logFile;
+    QMutex mutex;
     SettingsService *settings = nullptr;
 private:
     logFilter filter = NoLog;

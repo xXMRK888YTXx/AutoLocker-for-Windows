@@ -2,7 +2,7 @@
 
 AutoLockerService::AutoLockerService(SettingsService *settingsService, Logger *logger, QObject *parent) : Abstract_Service(parent)
 {
-    idleTime_ms = 20*1000;
+    idleTimeOut_ms = settingsService->getTimeout_s() * 1000;
     this->settingsService = settingsService;
     this->logger = logger;
     checkMouseThread = new QThread;
@@ -33,14 +33,12 @@ void AutoLockerService::changeStateService(ServiceState state, QString SERVICE_N
 
 void AutoLockerService::checkKeyBoard()
 {
-
-    for(int i = 0;i<256;i++) {
+    for(int i = 1;i<256;i++) {
         if(GetAsyncKeyState(i)) {
             emit resetT();
-
-        }
+            break;
     }
-
+}
 }
 
 void AutoLockerService::resetTimer()
@@ -48,7 +46,7 @@ void AutoLockerService::resetTimer()
     if(!idleTimer->isActive()) return;
     qDebug()<<"Timer reset";
     idleTimer->stop();
-    idleTimer->start(idleTime_ms);
+    idleTimer->start(idleTimeOut_ms);
 }
 
 void AutoLockerService::stopTimer()
@@ -60,9 +58,8 @@ void AutoLockerService::run()
 {
     checkMouseThread->create([&](){
         MousePoint currentPos = getPosMouse();
-        emit startT(idleTime_ms);
+        emit startT(idleTimeOut_ms);
         while (getService_State() == Run) {
-            checkKeyBoard();
             try {
                 MousePoint temp = getPosMouse();
                 qDebug()<<temp.toString();
@@ -77,7 +74,7 @@ void AutoLockerService::run()
         }
         emit stopT();
     })->start();
-    checkMouseThread->create([&](){
+    checkKeyBoardThread->create([&](){
         while(getService_State() == Run) {
             Sleep(1000);
              checkKeyBoard();

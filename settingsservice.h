@@ -8,16 +8,14 @@ class SettingsService
 public:
     SettingsService();
     int getLogLevel() noexcept {return LogLevel;};
-    int getTimeout_s() noexcept {return Timeout_s;};
-    bool getTray() noexcept {return Tray;};
-    short getDelayWorkStansionStateService() noexcept {return delayWorkStansionStateService_s;};
-    const QString VERSION = "v1.1alpha";
+    int getTimeout_s() noexcept {return idleTimeout_s;};
+    short getDelayPcStateCheck() noexcept {return delayPcStateCheck;};
+    const QString VERSION = "v1.2alpha";
 private:
     QSettings *Settings;
     int LogLevel = 0;
-    int Timeout_s = 60;
-    short delayWorkStansionStateService_s = 2;
-    bool Tray = false;
+    int idleTimeout_s = 120;
+    short delayPcStateCheck = 2;
     void initSettings() noexcept;
     void loadSettings() noexcept;
     bool isValid() noexcept;

@@ -13,24 +13,23 @@ void SettingsService::initSettings() noexcept
 {
     Settings->setValue("VERSION",VERSION);
     Settings->setValue("LogLevel",LogLevel);
-    Settings->setValue("Timeout_s",Timeout_s);
-    Settings->setValue("Tray",Tray);
-    Settings->setValue("delayWorkStansionStateService_s",delayWorkStansionStateService_s);
+    Settings->setValue("idleTimeout_s",idleTimeout_s);
+    Settings->setValue("delayPcStateCheck",delayPcStateCheck);
     //qDebug()<<"init";
 }
 
 void SettingsService::loadSettings() noexcept
 {
     LogLevel = Settings->value("LogLevel",LogLevel).toInt();
-    Timeout_s = Settings->value("Timeout_s",Timeout_s).toInt();
-    Tray = Settings->value("Tray",Tray).toBool();
-    delayWorkStansionStateService_s = Settings->value("delayWorkStansionStateService_s",delayWorkStansionStateService_s).toInt();
+    idleTimeout_s = Settings->value("idleTimeout_s",idleTimeout_s).toInt();
+    delayPcStateCheck = Settings->value("delayPcStateCheck",delayPcStateCheck).toInt();
     //qDebug()<<"load";
 }
 
 bool SettingsService::isValid() noexcept
 {
     if(LogLevel < 0||LogLevel>2) return false;
-    if(delayWorkStansionStateService_s > 30) return false;
+    if(delayPcStateCheck > 30||delayPcStateCheck < 1) return false;
+    if(idleTimeout_s < 10) return false;
     return true;
 }

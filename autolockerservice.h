@@ -15,10 +15,10 @@ private:
     MousePoint getPosMouse();
     QTimer *idleTimer;
     void changeStateService(ServiceState state, QString SERVICE_NAME) override;
-    int idleTime_ms = 0;
     QThread *checkMouseThread;
     QThread *checkKeyBoardThread;
     void checkKeyBoard();
+    int idleTimeOut_ms;
 signals:
     void startT(int s);
     void resetT();

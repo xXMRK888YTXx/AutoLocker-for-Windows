@@ -5,8 +5,7 @@ WorkStansionStatusServise::WorkStansionStatusServise(SettingsService *settingsSe
     this->settingsService = settingsService;
     this->logger = logger;
     checkStateThread = new QThread;
-    delay = settingsService->getDelayWorkStansionStateService() * 1000;
-
+    delay = settingsService->getDelayPcStateCheck() * 1000;
 }
 
 bool WorkStansionStatusServise::getWorkStansionState() //true - pc is not lock; false - pc is lock;
@@ -31,6 +30,7 @@ void WorkStansionStatusServise::stateWorkStansionChanged()
 {
     stateWorkStansion = !stateWorkStansion;
     emit workStansionStateChangedSignal(stateWorkStansion);
+
 }
 
 void WorkStansionStatusServise::run()

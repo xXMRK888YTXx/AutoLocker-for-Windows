@@ -1,19 +1,1 @@
 
-Programm Started in зђ шўэ 16 09:28:58 2022
-AutoLockerServicehas been running
-WorkStansionStatusServisehas been running
-
-Programm Started in зђ шўэ 16 09:30:26 20221.0alpha
-WorkStansionStatusServisehas been running
-AutoLockerServicehas been running
-
-Programm Started in зђ шўэ 16 09:31:30 2022 1.0alpha
-AutoLockerServicehas been running
-WorkStansionStatusServisehas been running
-
-Programm Started in бс шўэ 18 08:49:14 2022 v1.1alpha
-AutoLockerService has been running
-WorkStansionStatusServise has been running
-Pc in idle mode
-AutoLockerService has been stopped
-AutoLockerService has been running

@@ -17,6 +17,7 @@ enum Tag{
 #include <QDateTime>
 #include <QTextStream>
 #include <QMutex>
+#include <windows.h>
 #include "settingsservice.h"
 class Logger
 {

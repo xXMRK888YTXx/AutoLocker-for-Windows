@@ -38,7 +38,7 @@ void WorkStansionStatusServise::run()
     stateWorkStansion = getWorkStansionState();
     checkStateThread->create([&](){
         while(service_State == Run) {
-            //qDebug()<<stateWorkStansion;
+            qDebug()<<stateWorkStansion;
            if(stateWorkStansion != getWorkStansionState())
                stateWorkStansionChanged();
            Sleep(delay);

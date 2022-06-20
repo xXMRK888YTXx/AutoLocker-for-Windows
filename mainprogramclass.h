@@ -27,7 +27,7 @@ private:
     SettingsService *settingsService;
     void trackHotKey();
     Logger *logger;
-    void globalStateChange(ServiceState state);
+    void globalStateChange(ServiceState state,bool messagebox = false);
     void closeProcessTask();
 
 signals:

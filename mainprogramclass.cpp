@@ -30,23 +30,27 @@ void MainProgramClass::trackHotKey()
         while(true) {
             if(GetAsyncKeyState(VK_CONTROL)&&GetAsyncKeyState(VK_LSHIFT)&&GetAsyncKeyState('S')) {
                 if(workStansionStatusServise->getService_State() == Run)
-                    globalStateChange(Stop);
+                    globalStateChange(Stop,true);
                 else if(workStansionStatusServise->getService_State() == Stop)
-                    globalStateChange(Run);
+                    globalStateChange(Run,true);
                 logger->log(Tag::Info,"Hotkey pressed");
-                if(workStansionStatusServise->getService_State() == Run)
-                MessageBoxA(NULL, "AutoLocker servise is running", "AutoLocker state", MB_OK);
-                else  MessageBoxA(NULL, "AutoLocker servise is stopped", "AutoLocker state", MB_OK);
             }
             Sleep(100);
         }
     })->start();
 }
 
-void MainProgramClass::globalStateChange(ServiceState state)
+void MainProgramClass::globalStateChange(ServiceState state,bool messagebox)
 {
     emit changeServiseState(workStansionStatusServise->SERVICE_NAME,(int)state);
     emit changeServiseState(autoLockerService->SERVICE_NAME,(int)state);
+    if(state == Run&&messagebox) {
+         MessageBoxA(NULL, "AutoLocker servise is running", "AutoLocker state", MB_OK);
+
+    }
+    else if(state == Stop&&messagebox) {
+        MessageBoxA(NULL, "AutoLocker servise is stopped", "AutoLocker state", MB_OK);
+    }
 }
 
 void MainProgramClass::closeProcessTask()

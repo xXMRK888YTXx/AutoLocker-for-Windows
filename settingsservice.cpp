@@ -5,7 +5,10 @@ SettingsService::SettingsService()
     Settings = new QSettings("Settings.ini",QSettings::IniFormat);
     if(Settings->value("VERSION","nan").toString() != CURRENT_VERSION) initSettings();
     else loadSettings();
-    if(!isValid()) throw(Exception("InlegalSettingsException"));
+    if(!isValid()) {
+         MessageBoxA(NULL, "InlegalSettingsException", "Error", MB_OK);
+         throw(Exception("InlegalSettingsException"));
+    }
 }
 
 void SettingsService::initSettings() noexcept

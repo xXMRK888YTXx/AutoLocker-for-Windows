@@ -28,6 +28,8 @@ void Logger::setFilter(logFilter filter) noexcept
 void Logger::log(Tag tag, QString msg) noexcept
 {
     mutex.lock();
+    if(tag == Errors)
+    MessageBoxA(NULL, msg.toStdString().c_str(), "Error", MB_OK);
     if((int)tag <= (int)filter&&filter != logFilter::NoLog) {
         QTextStream write(&logFile);
         write<<msg<<endl;

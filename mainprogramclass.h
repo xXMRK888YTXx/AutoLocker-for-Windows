@@ -8,6 +8,7 @@
 #include <windows.h>
 #include "autolockerservice.h"
 #include <QProcess>
+#include <Psapi.h>
 #include "workstansionstatusservise.h"
 class MainProgramClass : public QObject
 {
@@ -28,6 +29,7 @@ private:
     Logger *logger;
     void globalStateChange(ServiceState state);
     void closeProcessTask();
+
 signals:
     void changeServiseState(QString service,int state);
 private slots:

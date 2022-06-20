@@ -34,8 +34,11 @@ void MainProgramClass::trackHotKey()
                 else if(workStansionStatusServise->getService_State() == Stop)
                     globalStateChange(Run);
                 logger->log(Tag::Info,"Hotkey pressed");
+                if(workStansionStatusServise->getService_State() == Run)
+                MessageBoxA(NULL, "AutoLocker servise is running", "AutoLocker state", MB_OK);
+                else  MessageBoxA(NULL, "AutoLocker servise is stopped", "AutoLocker state", MB_OK);
             }
-            Sleep(500);
+            Sleep(100);
         }
     })->start();
 }

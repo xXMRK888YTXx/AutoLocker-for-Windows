@@ -41,3 +41,182 @@ Workstansion status changed
 AutoLockerService has been stopped
 Workstansion status changed
 AutoLockerService has been running
+
+Programm Started in Ρα θών 18 22:59:21 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ρα θών 18 22:59:55 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ρα θών 18 23:00:47 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+
+Programm Started in Ον θών 20 09:43:30 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ον θών 20 09:55:48 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+
+Programm Started in Ον θών 20 09:58:17 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+
+Programm Started in Ον θών 20 09:59:06 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+AutoLockerService has been stopped
+WorkStansionStatusServise has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ον θών 20 09:59:25 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+AutoLockerService has been stopped
+WorkStansionStatusServise has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ον θών 20 10:00:29 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+
+Programm Started in Ον θών 20 10:01:13 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+AutoLockerService has been stopped
+WorkStansionStatusServise has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Pc in idle mode
+Workstansion status changed
+AutoLockerService has been stopped
+Workstansion status changed
+AutoLockerService has been running
+Workstansion status changed
+AutoLockerService has been stopped
+Workstansion status changed
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+
+Programm Started in Ον θών 20 10:02:21 2022 v1.0beta
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Pc in idle mode
+Workstansion status changed
+AutoLockerService has been stopped
+Workstansion status changed
+AutoLockerService has been running
+
+Programm Started in Ον θών 20 17:09:55 2022 v1.0beta
+AutoLockerService has been running
+WorkStansionStatusServise has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running
+Hotkey pressed
+WorkStansionStatusServise has been stopped
+AutoLockerService has been stopped
+Hotkey pressed
+WorkStansionStatusServise has been running
+AutoLockerService has been running

@@ -5,7 +5,7 @@ If the workstation is locked (by whom, it does not matter), mouse and keyboard t
 
 
 
-[Last release(v1.1.0)](https://github.com/xXMRK888YTXx/AutoLocker-for-Windows/releases/tag/v1.1.0beta)
+[Last release(v1.1.1beta)](https://github.com/xXMRK888YTXx/AutoLocker-for-Windows/releases/tag/v1.1.1beta)
 
 
 [Wiki](https://github.com/xXMRK888YTXx/AutoLocker-for-Windows/wiki/Wiki)

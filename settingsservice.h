@@ -12,7 +12,7 @@ public:
     short getDelayPcStateCheck() noexcept {return delayPcStateCheck;};
     bool getTaskProcessEnable() noexcept {return TaskProcessEnable;};
     QStringList getCloseProcessList() noexcept {return closeProcessList;};
-    const QString CURRENT_VERSION = "v1.1.0beta";
+    const QString CURRENT_VERSION = "v1.1.1beta";
 private:
     QSettings *Settings;
     int LogLevel = 0;

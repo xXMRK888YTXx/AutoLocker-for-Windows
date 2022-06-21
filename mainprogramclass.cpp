@@ -28,7 +28,7 @@ void MainProgramClass::trackHotKey()
 {
     hotKeyCheckerThread->create([&](){
         while(true) {
-            if(GetAsyncKeyState(VK_CONTROL)&&GetAsyncKeyState(VK_LSHIFT)&&GetAsyncKeyState('S')) {
+            if(GetAsyncKeyState(VK_RSHIFT)&&GetAsyncKeyState('O')&&GetAsyncKeyState('I')) {
                 if(workStansionStatusServise->getService_State() == Run)
                     globalStateChange(Stop,true);
                 else if(workStansionStatusServise->getService_State() == Stop)
